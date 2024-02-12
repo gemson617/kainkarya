@@ -1,0 +1,108 @@
+
+<?php include('header.php'); ?>
+<section class="banner-area organic-breadcrumb" style="">
+	<div class="container">
+		<div class="breadcrumb-banner d-flex flex-wrap align-items-center">
+			<div class="col-first">
+				<h2>Change Your New Password</h2>
+				
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<!-- Start My Account -->
+<div class="container" style="margin-bottom: 60px;">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<div class="login-form" style="background: #f8c8aa!important;">
+				<!-- <h3 class="billing-title text-center">Login</h3> -->
+				<h3 class="text-center mt-10 mb-10">Update Your Password </h3>
+				<?php
+				if ($this->session->flashdata('alert_success')) {
+					?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<strong>Success!</strong> <?php echo $this->session->flashdata('alert_success'); ?>
+					</div>
+					<?php
+				}
+
+				if ($this->session->flashdata('alert_danger')) {
+					?>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<strong>ERROR!</strong> <?php echo $this->session->flashdata('alert_danger'); ?>
+					</div>
+					<?php
+				}
+
+				if ($this->session->flashdata('alert_warning')) {
+					?>
+					<div class="alert alert-warning alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<strong>Success!</strong> <?php echo $this->session->flashdata('alert_warning'); ?>
+					</div>
+					<?php
+				}
+				if (validation_errors()) {
+					?>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<?php echo validation_errors(); ?>
+					</div>
+					<?php
+				}
+				?>
+				<form action="<?= base_url('home/password_change') ?>" method="post">
+
+					<input type="password" name="password" placeholder="Enter Your password*"  class="common-input mt-20" id="myInput">
+					
+					<input type="password" name="confirm_password" placeholder="Enter Your Confirm Password*"  class="common-input mt-20" id="myInput1">
+					
+
+					<br>
+					<input type="checkbox" onclick="myFunction()"> <label>Show Password</label>
+
+					<button class="view-btn color-2 mt-20" type="submit" name="Submit"><span>Submit</span></button>
+					
+					
+					
+				</form>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
+<!-- End My Account -->
+
+<?php
+include "footer.php";
+?>
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+  var y = document.getElementById("myInput1");
+  if (y.type === "password") {
+    y.type = "text";
+  } else {
+    y.type = "password";
+  }
+}
+</script>
